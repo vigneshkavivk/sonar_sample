@@ -12,6 +12,9 @@ spec:
   hostPath:
     path: "/mnt/data/sonarqube/extensions"
     type: DirectoryOrCreate
+  claimRef:
+    name: sonarqube-extensions-pvc
+    namespace: sonarqube
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

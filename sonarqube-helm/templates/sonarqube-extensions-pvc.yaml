@@ -5,10 +5,24 @@ metadata:
   namespace: sonarqube
 spec:
   capacity:
-    storage: 5Gi  # Adjust size if needed
+    storage: 5Gi  # Adjust the size as needed
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: sonarqube-sc
   hostPath:
-    path: "/mnt/data/sonarqube/extensions"  # Change this path as needed
+    path: "/mnt/data/sonarqube/extensions"  # Ensure this path exists on the worker node
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarqube-extensions-pvc
+  namespace: sonarqube
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: sonarqube-sc

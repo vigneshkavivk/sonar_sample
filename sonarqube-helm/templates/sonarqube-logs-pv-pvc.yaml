@@ -12,11 +12,15 @@ spec:
   hostPath:
     path: "/mnt/data/sonarqube/logs"
     type: DirectoryOrCreate
+  claimRef:
+    name: sonarqube-logs-pvc
+    namespace: sonarqube
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: sonarqube-logs-pvc
+  namespace: sonarqube
 spec:
   accessModes:
     - ReadWriteOnce

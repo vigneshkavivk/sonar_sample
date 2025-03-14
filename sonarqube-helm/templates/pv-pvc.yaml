@@ -4,7 +4,7 @@ metadata:
   name: sonarqube-sc
 provisioner: kubernetes.io/no-provisioner  # No dynamic provisioning
 reclaimPolicy: Retain
-volumeBindingMode: Immediate
+volumeBindingMode: WaitForFirstConsumer
 
 ---
 apiVersion: v1
